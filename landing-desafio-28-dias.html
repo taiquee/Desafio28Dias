@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desafio 28 Dias — Emagrecer com Saúde</title>
+<meta name="description" content="E-book e planner de 28 dias para emagrecer com hábitos simples e sustentáveis. Guia de alimentação, exercícios por idade, receitas e mentalidade.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F7F1E6;
+    --cream-2:#EFE6D4;
+    --ink:#22291F;
+    --ink-soft:#4B5142;
+    --rose:#B15E4E;
+    --rose-deep:#8F452F;
+    --sage:#7C8F6E;
+    --sage-deep:#586A4B;
+    --line: rgba(34,41,31,0.14);
+    --radius: 18px;
+    --shadow: 0 18px 40px -22px rgba(34,41,31,0.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    color:var(--ink);
+    line-height:1.12;
+    letter-spacing:-0.01em;
+    margin:0 0 .5em;
+  }
+  p{margin:0 0 1em;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  section{padding:96px 0;}
+  @media (max-width:720px){section{padding:64px 0;}}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(247,241,230,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1120px;margin:0 auto;}
+  .brand{font-family:'Fraunces',serif;font-weight:600;font-size:19px;}
+  .brand span{color:var(--rose-deep);}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:14px 26px;border-radius:100px;
+    font-weight:600;font-size:15px;text-decoration:none;
+    border:1px solid transparent;cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .btn-primary{background:var(--rose-deep);color:#fff;box-shadow:0 10px 24px -10px rgba(143,69,47,0.55);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 30px -12px rgba(143,69,47,0.6);}
+  .btn-ghost{background:transparent;border-color:var(--ink);color:var(--ink);padding:12px 22px;}
+  .btn-ghost:hover{background:var(--ink);color:var(--cream);}
+  .nav .btn{padding:11px 20px;font-size:14px;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:76px 0 40px;position:relative;overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center;}
+  @media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:40px;}}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--rose-deep);background:rgba(177,94,78,0.1);
+    border-radius:100px;padding:7px 14px;margin-bottom:20px;
+  }
+  .hero h1{font-size:clamp(34px,5vw,54px);}
+  .hero p.lead{font-size:18px;color:var(--ink-soft);max-width:46ch;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;}
+  .trust-row{margin-top:28px;display:flex;gap:22px;flex-wrap:wrap;font-size:13.5px;color:var(--ink-soft);}
+  .trust-row span{display:flex;align-items:center;gap:6px;}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--sage-deep);display:inline-block;}
+
+  /* Signature: 28-day ring */
+  .ring-card{
+    background:var(--ink);border-radius:28px;padding:38px;color:var(--cream);
+    box-shadow:var(--shadow); position:relative;
+  }
+  .ring-card h3{color:var(--cream);font-size:20px;margin-bottom:4px;}
+  .ring-card .sub{color:#C9CFC0;font-size:14px;margin-bottom:22px;}
+  .day-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;}
+  .day{
+    aspect-ratio:1;border-radius:8px;background:rgba(255,255,255,0.08);
+    display:flex;align-items:center;justify-content:center;
+    font-size:11px;color:#C9CFC0;
+  }
+  .day.w1{background:rgba(124,143,110,0.55);color:#fff;}
+  .day.w2{background:rgba(177,94,78,0.5);color:#fff;}
+  .day.w3{background:rgba(124,143,110,0.8);color:#fff;}
+  .day.w4{background:var(--rose-deep);color:#fff;}
+  .legend{display:flex;gap:16px;margin-top:18px;flex-wrap:wrap;font-size:12px;color:#C9CFC0;}
+  .legend span{display:flex;align-items:center;gap:6px;}
+  .legend i{width:10px;height:10px;border-radius:3px;display:inline-block;}
+
+  /* ---------- SECTION HEAD ---------- */
+  .section-head{max-width:640px;margin:0 auto 48px;text-align:center;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(28px,3.4vw,38px);}
+  .section-head p{color:var(--ink-soft);font-size:17px;}
+
+  /* ---------- PROMISE ---------- */
+  .promise{background:var(--cream-2);}
+  .promise-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+  @media (max-width:800px){.promise-grid{grid-template-columns:1fr;}}
+  .promise-card{background:var(--cream);border-radius:var(--radius);padding:32px;border:1px solid var(--line);}
+  .promise-card h3{font-size:20px;margin-bottom:10px;}
+  .promise-card.no h3{color:var(--rose-deep);}
+  .promise-card.yes h3{color:var(--sage-deep);}
+  .promise-card ul{margin:0;padding-left:20px;color:var(--ink-soft);}
+  .promise-card li{margin-bottom:8px;}
+
+  /* ---------- INCLUDES ---------- */
+  .includes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media (max-width:860px){.includes-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.includes-grid{grid-template-columns:1fr;}}
+  .include-card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;
+  }
+  .include-card .num{font-family:'Fraunces',serif;font-size:26px;color:var(--rose-deep);margin-bottom:10px;display:block;}
+  .include-card h3{font-size:17px;margin-bottom:6px;}
+  .include-card p{color:var(--ink-soft);font-size:14.5px;margin:0;}
+
+  /* ---------- WEEKS ---------- */
+  .weeks{background:var(--ink);color:var(--cream);}
+  .weeks .section-head h2{color:var(--cream);}
+  .weeks .section-head p{color:#C9CFC0;}
+  .weeks .eyebrow{background:rgba(247,241,230,0.12);color:#EBD9C9;}
+  .week-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  @media (max-width:860px){.week-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:520px){.week-grid{grid-template-columns:1fr;}}
+  .week-card{
+    background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);
+    border-radius:var(--radius);padding:26px;
+  }
+  .week-card .tag{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#EBD9C9;font-weight:600;}
+  .week-card h3{color:#fff;font-size:19px;margin:10px 0 8px;}
+  .week-card p{color:#C9CFC0;font-size:14px;margin:0;}
+
+  /* ---------- FOR WHOM ---------- */
+  .whom-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media (max-width:860px){.whom-grid{grid-template-columns:1fr;}}
+  .whom-card{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:var(--cream-2);}
+  .whom-card h3{font-size:18px;margin-bottom:8px;}
+  .whom-card p{color:var(--ink-soft);font-size:14.5px;margin:0;}
+  .note-box{
+    margin-top:32px;border:1px dashed var(--rose-deep);border-radius:14px;
+    padding:18px 22px;background:rgba(177,94,78,0.06);color:var(--ink-soft);font-size:14.5px;
+  }
+  .note-box b{color:var(--rose-deep);}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media (max-width:860px){.testi-grid{grid-template-columns:1fr;}}
+  .testi-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);}
+  .testi-card p{font-style:italic;color:var(--ink-soft);font-size:15px;}
+  .testi-name{font-weight:600;font-size:14px;color:var(--ink);}
+  .testi-role{font-size:12.5px;color:var(--ink-soft);}
+  .fine{font-size:12px;color:var(--ink-soft);text-align:center;margin-top:24px;}
+
+  /* ---------- PRICE ---------- */
+  .price{background:var(--cream-2);}
+  .price-card{
+    max-width:560px;margin:0 auto;background:#fff;border-radius:24px;
+    padding:44px;text-align:center;box-shadow:var(--shadow);border:1px solid var(--line);
+  }
+  .price-old{font-size:18px;color:var(--ink-soft);text-decoration:line-through;}
+  .price-new{font-family:'Fraunces',serif;font-size:52px;color:var(--rose-deep);margin:6px 0 4px;}
+  .price-new small{font-size:16px;font-family:'Inter',sans-serif;color:var(--ink-soft);font-weight:500;}
+  .price-list{text-align:left;margin:26px 0;padding:0;list-style:none;}
+  .price-list li{display:flex;gap:10px;margin-bottom:10px;font-size:14.5px;color:var(--ink-soft);}
+  .check{color:var(--sage-deep);font-weight:700;}
+  .guarantee{margin-top:20px;font-size:13px;color:var(--ink-soft);}
+
+  /* ---------- FAQ ---------- */
+  .faq-item{border-bottom:1px solid var(--line);padding:22px 0;}
+  .faq-item summary{
+    cursor:pointer;font-weight:600;font-size:16.5px;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:"+";font-size:22px;color:var(--rose-deep);font-weight:400;margin-left:12px;}
+  .faq-item[open] summary::after{content:"−";}
+  .faq-item p{color:var(--ink-soft);margin-top:12px;font-size:15px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:#C9CFC0;padding:48px 0 28px;font-size:13px;}
+  footer .wrap{display:flex;flex-direction:column;gap:14px;}
+  footer strong{color:#fff;}
+  .legal{max-width:760px;line-height:1.7;}
+
+  /* reveal */
+  .reveal{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease;}
+    .reveal.in{opacity:1;transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">Desafio 28 <span>Dias</span></div>
+    <a href="#comprar" class="btn btn-primary">Quero começar meu desafio</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">E-book + planner de 28 dias</span>
+      <h1>Emagrecer com saúde, um hábito de cada vez.</h1>
+      <p class="lead">Um guia prático e acolhedor para reorganizar sua alimentação, seu movimento e sua rotina em 4 semanas — sem dietas radicais, sem promessas milagrosas, no seu ritmo.</p>
+      <div class="hero-ctas">
+        <a href="#comprar" class="btn btn-primary">Quero começar meu desafio</a>
+        <a href="#como-funciona" class="btn btn-ghost">Ver como funciona</a>
+      </div>
+      <div class="trust-row">
+        <span><i class="dot"></i> Baseado em diretrizes de saúde pública</span>
+        <span><i class="dot"></i> Para todas as idades, com adaptações</span>
+        <span><i class="dot"></i> Acesso imediato após a compra</span>
+      </div>
+    </div>
+    <div class="ring-card reveal">
+      <h3>Seu planner de 28 dias</h3>
+      <div class="sub">4 semanas, um foco por vez</div>
+      <div class="day-grid" id="dayGrid"></div>
+      <div class="legend">
+        <span><i style="background:rgba(124,143,110,0.55)"></i> Semana 1 · Hidratação</span>
+        <span><i style="background:rgba(177,94,78,0.5)"></i> Semana 2 · Alimentação</span>
+        <span><i style="background:rgba(124,143,110,0.8)"></i> Semana 3 · Movimento</span>
+        <span><i style="background:#8F452F"></i> Semana 4 · Consistência</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="promise">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Por que este desafio é diferente</span>
+      <h2>Chega de recomeçar do zero toda semana</h2>
+      <p>A maioria das dietas falha porque pede uma mudança grande demais, rápido demais. Este desafio faz o oposto.</p>
+    </div>
+    <div class="promise-grid">
+      <div class="promise-card no reveal">
+        <h3>O que este desafio não é</h3>
+        <ul>
+          <li>Não é um cardápio de restrição extrema ou jejum prolongado.</li>
+          <li>Não promete um número fixo de quilos perdidos.</li>
+          <li>Não corta grupos alimentares inteiros da sua rotina.</li>
+        </ul>
+      </div>
+      <div class="promise-card yes reveal">
+        <h3>O que você constrói em 28 dias</h3>
+        <ul>
+          <li>Hábitos simples de hidratação, sono e alimentação.</li>
+          <li>Uma rotina de movimento adaptada à sua idade e condição.</li>
+          <li>Uma base que você consegue manter depois do desafio.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="inclui">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">O que vem no e-book</span>
+      <h2>Tudo o que você precisa em um só lugar</h2>
+    </div>
+    <div class="includes-grid">
+      <div class="include-card reveal"><span class="num">01</span><h3>Guia de alimentação</h3><p>O método do prato ideal, sem contagem de calorias.</p></div>
+      <div class="include-card reveal"><span class="num">02</span><h3>Planner dia a dia</h3><p>Checklist simples para as 4 semanas do desafio.</p></div>
+      <div class="include-card reveal"><span class="num">03</span><h3>Exercícios por idade</h3><p>Versões de baixo impacto, intermediárias e avançadas.</p></div>
+      <div class="include-card reveal"><span class="num">04</span><h3>Receitas rápidas</h3><p>Cinco receitas fáceis para o dia a dia.</p></div>
+      <div class="include-card reveal"><span class="num">05</span><h3>Mentalidade</h3><p>Como lidar com recaídas sem abandonar o processo.</p></div>
+      <div class="include-card reveal"><span class="num">06</span><h3>FAQ completo</h3><p>Respostas diretas para as dúvidas mais comuns.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="weeks" id="como-funciona">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Como funciona</span>
+      <h2>4 semanas, um foco por vez</h2>
+      <p>Cada semana tem um objetivo claro — você não precisa mudar tudo de uma vez.</p>
+    </div>
+    <div class="week-grid">
+      <div class="week-card reveal"><div class="tag">Semana 1</div><h3>Hidratação e hábitos</h3><p>Água, sono e menos ultraprocessados no dia a dia.</p></div>
+      <div class="week-card reveal"><div class="tag">Semana 2</div><h3>Reeducação alimentar</h3><p>O prato ideal em todas as refeições principais.</p></div>
+      <div class="week-card reveal"><div class="tag">Semana 3</div><h3>Movimento e energia</h3><p>Atividade física adaptada ao seu ritmo e idade.</p></div>
+      <div class="week-card reveal"><div class="tag">Semana 4</div><h3>Consistência</h3><p>Consolidando hábitos para depois do desafio.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="para-quem">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Para quem é</span>
+      <h2>Feito para começar de onde você está</h2>
+    </div>
+    <div class="whom-grid">
+      <div class="whom-card reveal"><h3>Mulheres</h3><p>Que já tentaram dietas restritivas e querem algo sustentável, sem culpa.</p></div>
+      <div class="whom-card reveal"><h3>Público 50+</h3><p>Com versões de exercício de baixo impacto — sempre com liberação médica prévia.</p></div>
+      <div class="whom-card reveal"><h3>Iniciantes</h3><p>Quem nunca fez um programa estruturado e quer um primeiro passo simples.</p></div>
+    </div>
+    <div class="note-box reveal"><b>Atenção:</b> este material é educativo e não substitui acompanhamento médico ou nutricional. Consulte um profissional de saúde antes de iniciar, especialmente se você é idoso, gestante ou tem alguma condição crônica.</div>
+  </div>
+</section>
+
+<section class="promise">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Quem já começou</span>
+      <h2>Histórias de quem deu o primeiro passo</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <p>"O que mudou pra mim foi não precisar ser perfeita todo dia. Segui o planner e me senti mais leve já na segunda semana."</p>
+        <div class="testi-name">Marta, 58 anos</div>
+        <div class="testi-role">Semana 4 do desafio</div>
+      </div>
+      <div class="testi-card reveal">
+        <p>"Sempre achei que precisava cortar tudo o que gostava. O guia do prato ideal mudou minha forma de comer sem sofrimento."</p>
+        <div class="testi-name">Renata, 34 anos</div>
+        <div class="testi-role">Concluiu o desafio</div>
+      </div>
+      <div class="testi-card reveal">
+        <p>"As versões de exercício de baixo impacto foram essenciais pra eu conseguir seguir sem dor nos joelhos."</p>
+        <div class="testi-name">João, 63 anos</div>
+        <div class="testi-role">Semana 3 do desafio</div>
+      </div>
+    </div>
+    <p class="fine">Depoimentos ilustrativos, escritos para representar experiências comuns do público do desafio.</p>
+  </div>
+</section>
+
+<section class="price" id="comprar">
+  <div class="wrap">
+    <div class="price-card reveal">
+      <span class="eyebrow">Oferta de lançamento</span>
+      <div class="price-old">De R$ 97</div>
+      <div class="price-new">R$ 47 <small>pagamento único</small></div>
+      <ul class="price-list">
+        <li><span class="check">✓</span> E-book completo com os 28 dias do desafio</li>
+        <li><span class="check">✓</span> Planner diário para acompanhar seu progresso</li>
+        <li><span class="check">✓</span> Guia de alimentação e receitas inclusos</li>
+        <li><span class="check">✓</span> Acesso imediato após a confirmação do pagamento</li>
+      </ul>
+      <!-- SUBSTITUIR href="#comprar" pelo link de checkout da Cakto assim que estiver disponível -->
+      <a href="#comprar" class="btn btn-primary" style="width:100%;padding:16px;font-size:16px;">Quero começar meu desafio</a>
+      <p class="guarantee">Satisfação garantida — se o material não for para você, entre em contato para orientações sobre o reembolso conforme a política de compra.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap" style="max-width:760px;">
+    <div class="section-head reveal">
+      <span class="eyebrow">Perguntas frequentes</span>
+      <h2>Ainda com dúvidas?</h2>
+    </div>
+    <details class="faq-item" open>
+      <summary>Isso substitui acompanhamento médico ou nutricional?</summary>
+      <p>Não. O e-book é um material educativo de apoio, não uma prescrição individual. Consulte sempre um médico ou nutricionista antes de iniciar mudanças na alimentação ou na rotina de exercícios.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Posso fazer o desafio tendo mais de 60 anos?</summary>
+      <p>Sim, com liberação médica prévia. O e-book traz versões de baixo impacto para essa fase da vida.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Como recebo o material após a compra?</summary>
+      <p>O acesso é liberado automaticamente logo após a confirmação do pagamento, por e-mail.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Preciso cortar carboidratos ou fazer jejum?</summary>
+      <p>Não. O desafio usa o método do prato ideal, com porções equilibradas — sem cortes radicais de grupos alimentares.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Quanto peso vou perder em 28 dias?</summary>
+      <p>Isso varia de pessoa para pessoa. O foco do desafio é construir hábitos sustentáveis, não prometer um número fixo na balança.</p>
+    </details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <strong>Desafio 28 Dias</strong>
+    <p class="legal">Este material tem finalidade educativa e informativa e não substitui consulta, diagnóstico ou acompanhamento com profissionais de saúde. Antes de iniciar qualquer mudança alimentar ou programa de exercícios, procure orientação médica — especialmente se você é idoso, gestante ou possui alguma condição de saúde pré-existente.</p>
+    <p>© 2026 Desafio 28 Dias. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  // Signature day-grid (28 days, 4 weeks of 7)
+  const grid = document.getElementById('dayGrid');
+  for (let i = 1; i <= 28; i++) {
+    const d = document.createElement('div');
+    const week = Math.ceil(i / 7);
+    d.className = 'day w' + week;
+    d.textContent = i;
+    grid.appendChild(d);
+  }
+
+  // Scroll reveal
+  if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    const items = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    items.forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
